@@ -3,6 +3,82 @@
 
 #{menu id:"dashboard"/}
 
-<section class="ui segment">
-  #{mainpanel/}
+<section class="ui raised segment">
+  <header class="ui header">
+    Play Gym Assessment
+  </header>
+  <div class="ui list">
+
+    <div class="ui item">
+      <table class="ui fixed table">
+        <thead>
+          <tr>
+            <th>Weight</th>
+            <th>Chest</th>
+            <th>Thigh</th>
+            <th>Upper Arm</th>
+            <th>Waist</th>
+            <th>Hips</th>
+          </tr>
+        </thead>
+        <tbody>
+          #{list items:assessmentlist, as:'assessment'}
+            <tr>
+              <td>
+                ${assessment.weight}
+              </td>
+              <td>
+                ${assessment.chest}
+              </td>
+              <td>
+                ${assessment.thigh}
+              </td>
+              <td>
+                ${assessment.upperArm}
+              </td>
+              <td>
+                ${assessment.waist}
+              </td>
+              <td>
+                ${assessment.hips}
+              </td>
+            </tr>
+
+        </tbody>
+        #{/list}
+      </table>
+    </div>
+  </div>
 </section>
+
+<form class="ui stacked segment form" action="/dashboard/addassessment" method="POST">
+  <div class="two fields">
+    <div class="field">
+      <label>Weight</label>
+      <input placeholder="00.00kg" type="number" step="any" name="weight">
+    </div>
+    <div class="field">
+      <label>Chest</label>
+      <input placeholder="00.00cm" type="number" name="chest">
+    </div>
+    <div class="field">
+      <label>Thigh</label>
+      <input placeholder="00.00cm" type="number" step="any" name="thigh">
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <label>Upper Arm</label>
+      <input placeholder="00.00cm" type="number" step="any" name="upperArm">
+    </div>
+    <div class="field">
+      <label>Waist</label>
+      <input placeholder="00.00cm" type="number" step="any" name="waist">
+    </div>
+    <div class="field">
+      <label>Hips</label>
+      <input placeholder="00.00cm" type="number" step="any" name="hips">
+    </div>
+  </div>
+  <button class="ui blue submit button">Add Assessment</button>
+</form>
